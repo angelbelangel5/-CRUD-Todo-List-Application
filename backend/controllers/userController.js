@@ -25,6 +25,24 @@ const createUser = async (req, res) => {
   }
 };
 
+
+const loginUser = async (req, res) => {
+    const { email, password } = req.body;
+    try {
+      const userExist = await UserModel.findOne({ email: email });
+      if (!userExist) {
+        return res.status(404).json({ message: "USER DOESNT EXIST " });
+      }
+      const token = jwt.sign({ email }, secretKey, { expiresIn: "1d" });
+      //  jwt.verify(token, secretKey, { algorithms: ["HS256", "none"] })
+      res.json({ token });
+    } catch (error) {
+      console.error("Login Failed ", error);
+      res.status(500).json({ message: "Internal server error" });
+    }
+  };
+
 module.exports = {
   createUser,
+  loginUser,
 };
