@@ -8,6 +8,8 @@ exports.createTodo = async (req, res) => {
       description: req.body.description,
       status: req.body.status,
       dueDate: req.body.dueDate,
+      category: req.body.category, //category to the new Todo
+      tags: req.body.tags,
     });
     const todo = await newTodo.save();
     res.status(201).json(todo);
@@ -19,7 +21,9 @@ exports.createTodo = async (req, res) => {
 // get all data in todo
 exports.getTodos = async (req, res) => {
   try {
-    const todos = await Todo.find();
+    const category = req.query.category;
+    const query = category ? { category } : {};//caegory is provided get todo by category
+    const todos = await Todo.find(query);
     res.status(200).json(todos);
   } catch (err) {
     res.status(400).json({ error: err.message });
