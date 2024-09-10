@@ -17,3 +17,15 @@ export const login = async (email, password) => {
 };
 
 
+
+//  user registration
+export const register = async (username, email, password) => {
+    try {
+      const response = await axios.post(`${API_URL}/signup`, { username, email, password });
+      return response.data; 
+    } catch (error) {
+      console.error('Error signing up:', error);
+      throw error;
+    }
+  };
+  
