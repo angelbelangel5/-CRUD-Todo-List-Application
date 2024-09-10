@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import axios from 'axios';
-
+import { register } from '../api/user';
 const Signup = () => {
   const [formData, setFormData] = useState({
     username: '',
@@ -10,7 +9,6 @@ const Signup = () => {
 
   const { username, email, password } = formData;
 
-  // Handle form input changes
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({
@@ -19,12 +17,12 @@ const Signup = () => {
     });
   };
 
-  // Handle form submission
+  //  form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:5000/user/signup', formData);
-      alert(response.data.message); 
+      const response = await register(username, email, password);
+      alert(response.message); 
       setFormData({
         username: '',
         email: '',
