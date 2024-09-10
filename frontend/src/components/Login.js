@@ -1,33 +1,24 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
-  const [formData, setFormData] = useState({
-    email: '',
-    password: ''
-  });
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const navigate = useNavigate();
 
-  const { email, password } = formData;
-
-  // Handle form input changes
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value
-    });
-  };
-
-  // Handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:5000/user/login', formData);
-      alert('Login successful!'); 
-      localStorage.setItem('token', response.data.token); 
+      const response = await axios.post('http://localhost:5000/user/login', {
+        email,
+        password,
+      });
+      const { token } = response.data;
+      localStorage.setItem('token', token); // Save the token in localStorage or any other storage
+      navigate('/'); 
     } catch (error) {
       console.error('Error logging in:', error);
-      alert('Failed to log in. Please check your credentials.');
     }
   };
 
@@ -39,9 +30,8 @@ const Login = () => {
           <label>Email:</label>
           <input
             type="email"
-            name="email"
             value={email}
-            onChange={handleChange}
+            onChange={(e) => setEmail(e.target.value)}
             required
           />
         </div>
@@ -49,9 +39,8 @@ const Login = () => {
           <label>Password:</label>
           <input
             type="password"
-            name="password"
             value={password}
-            onChange={handleChange}
+            onChange={(e) => setPassword(e.target.value)}
             required
           />
         </div>
