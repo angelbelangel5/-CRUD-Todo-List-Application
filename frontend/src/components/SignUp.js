@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import { register } from '../api/user';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import './signup.css'; // Import custom CSS for additional styling
+
 const Signup = () => {
   const [formData, setFormData] = useState({
     username: '',
@@ -17,7 +20,6 @@ const Signup = () => {
     });
   };
 
-  //  form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -35,41 +37,57 @@ const Signup = () => {
   };
 
   return (
-    <div>
-      <h2>Sign Up</h2>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>Username:</label>
-          <input
-            type="text"
-            name="username"
-            value={username}
-            onChange={handleChange}
-            required
-          />
+    <div className="container mt-5">
+      <div className="row justify-content-center">
+        <div className="col-md-4">
+          <div className="card shadow-sm">
+            <div className="card-header bg-success text-white text-center">
+              <h3>Sign Up</h3>
+            </div>
+            <div className="card-body">
+              <form onSubmit={handleSubmit}>
+                <div className="form-group">
+                  <label htmlFor="username">Username:</label>
+                  <input
+                    type="text"
+                    id="username"
+                    name="username"
+                    className="form-control"
+                    value={username}
+                    onChange={handleChange}
+                    required
+                  />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="email">Email:</label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    className="form-control"
+                    value={email}
+                    onChange={handleChange}
+                    required
+                  />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="password">Password:</label>
+                  <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    className="form-control"
+                    value={password}
+                    onChange={handleChange}
+                    required
+                  />
+                </div>
+                <button type="submit" className="btn btn-success btn-block mt-3">Sign Up</button>
+              </form>
+            </div>
+          </div>
         </div>
-        <div>
-          <label>Email:</label>
-          <input
-            type="email"
-            name="email"
-            value={email}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <div>
-          <label>Password:</label>
-          <input
-            type="password"
-            name="password"
-            value={password}
-            onChange={handleChange}
-            required
-          />
-        </div>
-        <button type="submit">Sign Up</button>
-      </form>
+      </div>
     </div>
   );
 };
