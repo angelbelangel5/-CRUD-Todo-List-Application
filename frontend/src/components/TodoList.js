@@ -23,11 +23,11 @@ const [todos, setTodos] = useState([]);
   }, []);
 
   if (loading) {
-    return <p>Loading...</p>;
+    return <p>loading...</p>;
   }
 
   if (error) {
-    return <p>Error: {error}</p>;
+    return <p>errorrrr: {error}</p>;
   }
 
   return (
