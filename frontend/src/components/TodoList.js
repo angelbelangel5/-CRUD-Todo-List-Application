@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const TodoList = () => {
   const [todos, setTodos] = useState([]);
@@ -13,6 +14,7 @@ const TodoList = () => {
     category: '',
     tags: ''
   });
+  const navigate = useNavigate();
 
   // Fetch todos from backend
   useEffect(() => {
@@ -78,6 +80,8 @@ const TodoList = () => {
     <div>
       
       <h2>To do </h2>
+      <button onClick={() => navigate('/add')}>Add New Todo</button> 
+
       {editTodo ? (
         <div>
           <h3>Edit Todo</h3>
