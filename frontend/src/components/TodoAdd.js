@@ -8,11 +8,30 @@ const [title, setTitle] = useState('');
   const [category, setCategory] = useState('');
   const [tags, setTags] = useState('');
 
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await axios.post('http://localhost:5000/todos', {
+        title,
+        description,
+        status,
+        dueDate,
+        category,
+        tags: tags.split(',').map(tag => tag.trim())
+      });
+
+      console.log('Todo added:', response.data);
+    } catch (err) {
+      console.error('Error adding todo:', err);
+    }
+  };
   return (
     <form onSubmit={handleSubmit}>
     <h2>Add New Todo</h2>
     <div>
-      <label>Title:</label>
+      <label>Title</label>
       <input
         type="text"
         value={title}
@@ -21,7 +40,7 @@ const [title, setTitle] = useState('');
       />
     </div>
     <div>
-      <label>Description:</label>
+      <label>Description</label>
       <input
         type="text"
         value={description}
@@ -30,7 +49,7 @@ const [title, setTitle] = useState('');
       />
     </div>
     <div>
-      <label>Status:</label>
+      <label>Status</label>
       <input
         type="text"
         value={status}
@@ -39,7 +58,7 @@ const [title, setTitle] = useState('');
       />
     </div>
     <div>
-      <label>Due Date:</label>
+      <label>Due Date</label>
       <input
         type="date"
         value={dueDate}
