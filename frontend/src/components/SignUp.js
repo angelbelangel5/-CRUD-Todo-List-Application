@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { register } from '../api/user';
+import { useNavigate } from 'react-router-dom';
+
 import 'bootstrap/dist/css/bootstrap.min.css';
-import './signup.css'; // Import custom CSS for additional styling
+import './signup.css'; 
 
 const Signup = () => {
   const [formData, setFormData] = useState({
@@ -9,6 +11,8 @@ const Signup = () => {
     email: '',
     password: ''
   });
+
+  const navigate = useNavigate();
 
   const { username, email, password } = formData;
 
@@ -35,6 +39,13 @@ const Signup = () => {
       alert('Failed to sign up. Please try again.');
     }
   };
+
+
+
+  const handleLoginClick = () => {
+    navigate('/');
+  };
+
 
   return (
     <div className="container mt-5">
@@ -84,6 +95,9 @@ const Signup = () => {
                 </div>
                 <button type="submit" className="btn btn-success btn-block mt-3">Sign Up</button>
               </form>
+              <div className="text-center mt-3">
+                <button className="btn btn-secondary" onClick={handleLoginClick}>Already have an account</button>
+              </div>
             </div>
           </div>
         </div>

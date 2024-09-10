@@ -6,6 +6,7 @@ import SignUp from './components/SignUp'
 import Login from './components/Login';
 import AddTodo from './components/AddTodo';
 import ProtectedRoutes from './utils/ProtectedRoutes'
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const App = () => {
   return (

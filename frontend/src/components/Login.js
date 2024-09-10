@@ -18,6 +18,11 @@ const Login = () => {
     }
   };
 
+
+
+  const handleRegisterClick = () => {
+    navigate('/register');
+  };
   return (
     <div className="container mt-5">
       <div className="row justify-content-center">
@@ -52,6 +57,9 @@ const Login = () => {
                 </div>
                 <button type="submit" className="btn btn-primary btn-block mt-3">Login</button>
               </form>
+              <div className="text-center mt-3">
+                <button className="btn btn-secondary" onClick={handleRegisterClick}>Register</button>
+              </div>
             </div>
           </div>
         </div>
