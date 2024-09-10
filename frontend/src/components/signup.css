@@ -1,0 +1,22 @@
+
+body {
+    background-color: #f8f9fa; /*  background for the whole page */
+  }
+  
+  .card {
+    border-radius: 10px; /*  corners for the card */
+  }
+  
+  .card-header {
+    border-bottom: none; /* remove border from card header */
+  }
+  
+  .btn-success {
+    background-color: #28a745; /*  success color */
+    border: none; /* removing border from button */
+  }
+  
+  .btn-success:hover {
+    background-color: #218838; 
+  }
+  
