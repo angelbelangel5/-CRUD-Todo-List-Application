@@ -17,6 +17,7 @@ Start the server with node index.js.
 
 
 Frontend:
+
 Navigate to the frontend directory (cd frontend).
 Run npm install to install dependencies.
 Start the frontend with npm start.
