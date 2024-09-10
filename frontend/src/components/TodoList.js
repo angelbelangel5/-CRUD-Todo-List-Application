@@ -76,7 +76,8 @@ const TodoList = () => {
 
   return (
     <div>
-      <h2>Todo List</h2>
+      
+      <h2>To do </h2>
       {editTodo ? (
         <div>
           <h3>Edit Todo</h3>
