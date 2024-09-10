@@ -1,0 +1,24 @@
+body {
+    background-color: #f8f9fa; /* background  */
+  }
+  
+  .card {
+    border-radius: 10px; /* for card */
+  }
+  
+  .card-header {
+    border-bottom: none;
+  }
+  
+  .list-group-item {
+    border-radius: 10px; /* roun corners for list items */
+  }
+  
+  .btn {
+    margin-right: 0.5rem; /* space between buttons */
+  }
+  
+  .btn-secondary {
+    margin-left: 0.5rem; /* Space for cancel button */
+  }
+  
