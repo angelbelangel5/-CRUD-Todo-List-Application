@@ -10,7 +10,7 @@ const [todos, setTodos] = useState([]);
   useEffect(() => {
     const fetchTodos = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/todos'); 
+        const response = await axios.get('http://localhost:5000/todo'); 
         setTodos(response.data);
       } catch (err) {
         setError(err.message);
