@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
-
+import { useNavigate } from 'react-router-dom'; 
 const AddTodo = () => {
   
   const [todoData, setTodoData] = useState({
@@ -11,6 +11,7 @@ const AddTodo = () => {
     category: '',
     tags: ''
   });
+  const navigate = useNavigate();  
 
   // Handle form input changes
   const handleChange = (e) => {
@@ -41,6 +42,7 @@ const AddTodo = () => {
         category: '',
         tags: ''
       });
+      navigate('/');
     } catch (error) {
       console.error('Error adding todo:', error);
     }
