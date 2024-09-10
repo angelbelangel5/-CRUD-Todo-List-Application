@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-
+import { login } from '../api/user';
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -10,15 +9,10 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:5000/user/login', {
-        email,
-        password,
-      });
-      const { token } = response.data;
-      localStorage.setItem('token', token); // Save the token in localStorage or any other storage
-      navigate('/'); 
+      await login(email, password);
+      navigate('/');
     } catch (error) {
-      console.error('Error logging in:', error);
+      console.error('Login failed:', error);
     }
   };
 
